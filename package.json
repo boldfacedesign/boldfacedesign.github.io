@@ -1,0 +1,18 @@
+{
+  "name": "boldfacedesign",
+  "version": "0.0.0",
+  "description": "github.io repo",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boldfacedesign/boldfacedesign.github.io"
+  },
+  "author": "david parker",
+  "bugs": {
+    "url": "https://github.com/boldfacedesign/boldfacedesign.github.io/issues"
+  },
+  "homepage": "https://github.com/boldfacedesign/boldfacedesign.github.io"
+}

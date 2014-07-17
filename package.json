@@ -25,6 +25,8 @@
     "gulp-styledocco": "0.0.1",
     "gulp-jasmine": "~0.2.0",
     "gulp-coverage": "~0.1.24",
-    "gulp-jsdoc": "~0.1.4"
+    "gulp-jsdoc": "~0.1.4",
+    "gulp-rename": "~1.2.0",
+    "gulp-util": "~2.2.20"
   }
 }

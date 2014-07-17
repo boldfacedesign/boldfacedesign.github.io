@@ -1,0 +1,136 @@
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+
+/**
+ * $CONTENTS............Table of contents
+ * $COMMENTS............Comment formatting
+
+ * $BASE................Generic utility styles, variables and mixins, unclassed HTML elements etc.
+ *  RESET...............Please put a description of the contents of the partial here
+ *  FORMS...............Please put a description of the contents of the partial here
+ *  HEADINGS............Please put a description of the contents of the partial here
+ *  HELPER..............Please put a description of the contents of the partial here
+ *  TYPOGRAPHY..........Please put a description of the contents of the partial here
+
+ * $LAYOUT..............Structural elements/areas, grids, columns
+ *  GRIDS...............Please put a description of the contents of the partial here
+ *  LAYOUT..............Please put a description of the contents of the partial here
+
+ * $VENDOR..............CSS or Sass from other projects - do not change, but overwrite if necessary
+ *  COLORPICKER.........Please put a description of the contents of the partial here
+
+ * $COMPONENTS..........Objects and abstractions etc.
+ *  MEDIA...............Please put a description of the contents of the partial here 
+ *  ICON................Please put a description of the contents of the partial here 
+ *  PODS................Please put a description of the contents of the partial here 
+ *  PAGINATION..........Please put a description of the contents of the partial here
+ *  BREADCRUMB..........Please put a description of the contents of the partial here
+ *  SITE SEARCH.........Please put a description of the contents of the partial here  
+
+ * $NON-MODULAR.........Template-specific/temporary fixes/short-expiry pages etc.
+ *  T01.................Please put a description of the contents of the partial here
+ *  TEMP FIXES..........Please put a description of the contents of the partial here 
+
+ * $SPRITES.............Sprite styles
+ *  SPRITES.............Please put a description of the contents of the partial here 
+ *
+
+ * $PRINT...............Print styles
+ *  PRINT...............Please put a description of the contents of the partial here 
+ */
+
+
+/*------------------------------------*\
+    $COMMENTS
+\*------------------------------------*/
+
+/*------------------------------------*\
+    $SECTION HEADING
+\*------------------------------------*/
+
+/* ----- single line subheading ----- */
+
+/**
+ * multi-line comments
+ * comments use
+ * DocBlock formatting
+ */
+
+/* short comment */
+
+/*ul*/
+
+
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+
+// generic utility styles, variables and mixins, base styles, unclassed HTML elements etc.
+
+@import "base/reset";
+@import "base/forms";
+@import "base/headings";
+@import "base/helper";
+@import "base/typography";
+
+
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+/**
+ * structural elements/areas, grids, columns etc.
+ */
+@import "layout/layout";
+
+
+/*------------------------------------*\
+    $VENDOR
+\*------------------------------------*/
+/**
+ * CSS or Sass from other projects - do not change, but overwrite if necessary.
+ */
+//@import "vendor/colorpicker";
+//@import "vendor/jquery.ui.core";
+
+
+/*------------------------------------*\
+    $COMPONENTS
+\*------------------------------------*/
+/**
+ * objects and abstractions etc.
+ */
+@import "components/media";
+@import "components/icon";
+@import "components/pods";
+@import "components/pagination";
+@import "components/breadcrumb";
+@import "components/site-search";
+
+/*------------------------------------*\
+    $NON-MODULAR
+\*------------------------------------*/
+/**
+ * template-specific/temporary pages etc.
+ */
+@import "pages/T01-index";
+
+//Temp fixes must always come after other template includes
+@import "pages/temp-fixes";
+
+/*------------------------------------*\
+    $SPRITE
+\*------------------------------------*/
+/**
+ * sprite url declarion and image name classes with coordinates
+ */
+
+ @import "sprites";
+
+/*------------------------------------*\
+    $PRINT
+\*------------------------------------*/
+/**
+ * print style
+ */
+@import "base/print";

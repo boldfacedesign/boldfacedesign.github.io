@@ -2,12 +2,19 @@ var gulp = require('gulp'),
 	util = require('gulp-util'),
 	kss = require('gulp-kss'),
 	sourcemaps = require('gulp-sourcemaps'),
-	uglify = require('gulp-uglify');
+	uglify = require('gulp-uglify'),
+	rename = require('rename'),
+	imagemin = require('gulp-imagemin'),
+	newer = require('gulp-newer'),
+	include = require('gulp-include');
 
 var paths = {
   js: ['js/*.js', '!js/libs/*'],
+  js_dest: 'js/min',
   images: 'images/site/*',
-  html: 'html/partials/*'
+  image_dest: 'images/site-min',
+  html: 'html/pages/*',
+  html_dest: ['html/dev', 'html/prod']
 };
 
 
@@ -19,20 +26,30 @@ gulp.task('scripts-min', ['clean'], function() {
     	.pipe(rename(function (path) {
     		path.basename += ".min";
     	})
-    	.pipe(gulp.dest('js/min'));
+    	.pipe(gulp.dest(paths.js_dest));
 });
 
-
+// Compress all site images (not icons)
 gulp.task('images', function() {
 	return gulp.src(paths.images)
+		.pipe(newer(paths.image_dest))
 		.pipe(imagemin({
             progressive: true,
             optimizationLevel: 3,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngcrush()]
         }))
-        .pipe(gulp.dest('images/site-min'));
+        .pipe(gulp.dest(image_dest));
 });
+
+// Compile HTML from partials into dev/prod folders
+gulp.task('html', function() {
+	return gulp.src(paths.html)
+		.pipe(newer(paths.html_dest))
+		.pipe(include())
+		.pipe(gulp.dest('html/dev'));
+});
+
 
 //Compile auto generated styleguides using node KSS
 gulp.task('kss-css', function() {
@@ -60,4 +77,5 @@ gulp.task('kss', ['kss-css', 'kss-sprite'], function(){
 gulp.task('watch', function() {
   gulp.watch(paths.js, ['scripts']);
   gulp.watch(paths.images, ['images']);
+  gulp.watch(['html/partials/*', 'html/pages/*'], ['html']);
 });

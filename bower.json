@@ -1,0 +1,32 @@
+{
+  "name": "boldfacedesign.github.io",
+  "version": "0.0.0",
+  "homepage": "http://boldfacedesign.github.io",
+  "authors": [
+    "david parker"
+  ],
+  "description": "boldface design",
+  "main": "index.html",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "boldfacedesign"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.1",
+    "require": "*"
+  }
+}

@@ -3,17 +3,18 @@ var gulp = require('gulp'),
 	kss = require('gulp-kss'),
 	sourcemaps = require('gulp-sourcemaps'),
 	uglify = require('gulp-uglify'),
-	rename = require('rename'),
+	rename = require('gulp-rename'),
 	imagemin = require('gulp-imagemin'),
 	newer = require('gulp-newer'),
-	include = require('gulp-include');
+	include = require('gulp-include'),
+	prettify = require('gulp-prettify');
 
 var paths = {
   js: ['js/*.js', '!js/libs/*'],
   js_dest: 'js/min',
   images: 'images/site/*',
   image_dest: 'images/site-min',
-  html: 'html/pages/*',
+  html: 'html/pages/*.html',
   html_dest: ['html/dev', 'html/prod']
 };
 
@@ -25,7 +26,7 @@ gulp.task('scripts-min', ['clean'], function() {
     	.pipe(uglify())
     	.pipe(rename(function (path) {
     		path.basename += ".min";
-    	})
+    	}))
     	.pipe(gulp.dest(paths.js_dest));
 });
 
@@ -39,15 +40,15 @@ gulp.task('images', function() {
             svgoPlugins: [{removeViewBox: false}],
             use: [pngcrush()]
         }))
-        .pipe(gulp.dest(image_dest));
+        .pipe(gulp.dest(image_dest))
 });
 
 // Compile HTML from partials into dev/prod folders
 gulp.task('html', function() {
 	return gulp.src(paths.html)
-		.pipe(newer(paths.html_dest))
 		.pipe(include())
-		.pipe(gulp.dest('html/dev'));
+		.pipe(prettify({indentSize: 2}))
+		.pipe(gulp.dest('html/dev'))
 });
 
 
@@ -55,12 +56,12 @@ gulp.task('html', function() {
 gulp.task('kss-css', function() {
 	return gulp.src(['css/master.css'])             //get compiled CSS
 		.pipe(rename('style.css'))                    //rename to KSS required nameing convention
-		.pipe(gulp.dest('guides/complete/public'));   //move to KSS compile folder
+		.pipe(gulp.dest('guides/complete/public'))   //move to KSS compile folder
 });
  
 gulp.task('kss-sprite', function() {
 	return gulp.src(['images/sprite/*.png'])
-		.pipe(gulp.dest('guides/complete/images/sprite'));  //get sprite and move to KSS compile folder
+		.pipe(gulp.dest('guides/complete/images/sprite'))  //get sprite and move to KSS compile folder
 });
  
 gulp.task('kss', ['kss-css', 'kss-sprite'], function(){
@@ -68,7 +69,7 @@ gulp.task('kss', ['kss-css', 'kss-sprite'], function(){
 		.pipe(kss({
 			overview: __dirname + '/guides/styleguide.md'   //define markdown file
 		}))
-		.pipe(gulp.dest('guides/complete'));              //define compile folder
+		.pipe(gulp.dest('guides/complete'))              //define compile folder
 });
 
 

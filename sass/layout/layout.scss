@@ -1,0 +1,27 @@
+
+.header--primary {
+    position: relative;
+    width: 100%;
+    display: block;
+    background: #ccc;
+    min-height: 60px;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.nav--primary {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 60px;
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    background: #FCFC23;
+    z-index: 1;
+}
+
+.main {
+    padding-left: 20%;
+}

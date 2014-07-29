@@ -7,7 +7,11 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	newer = require('gulp-newer'),
 	include = require('gulp-include'),
-	prettify = require('gulp-prettify');
+	prettify = require('gulp-prettify'),
+  compass = require('gulp-compass'),
+  cssmin = require('gulp-minify-css'),
+  jshint = require('gulp-jshint'),
+  clean = require('gulp-clean');
 
 var paths = {
   js: ['js/*.js', '!js/libs/*'],
@@ -15,15 +19,33 @@ var paths = {
   images: 'images/site/*',
   image_dest: 'images/site-min',
   html: 'html/pages/*.html',
-  html_dest: ['html/dev', 'html/prod']
+  html_dest: ['html/dev', 'html/prod'],
+  sass: 'sass/master.scss',
+  sass_dest: 'css'
 };
 
 
+gulp.task('css', function() {
+    return gulp.src(paths.sass)
+        .pipe(compass({
+            config_file: './config.rb',
+            sass: 'sass',
+            css: paths.sass_dest
+        }))
+        .pipe(gulp.dest(paths.sass_dest))
+        .pipe(cssmin())
+        .pipe(rename(function (path) {
+            path.basename += ".min";
+        }))
+        .pipe(gulp.dest(paths.sass_dest))
+})
 
 // Minify and copy all JavaScript (except vendor scripts)
 gulp.task('scripts-min', ['clean'], function() {
 	return gulp.src(paths.scripts)
-    	.pipe(uglify())
+        .pipe(newer(paths.js_dest))
+    	.pipe(jshint())
+        .pipe(uglify())
     	.pipe(rename(function (path) {
     		path.basename += ".min";
     	}))
@@ -49,6 +71,11 @@ gulp.task('html', function() {
 		.pipe(include())
 		.pipe(prettify({indentSize: 2}))
 		.pipe(gulp.dest('html/dev'))
+});
+
+gulp.task('clean', function() {
+  return gulp.src([paths.js_dest, paths.sass_dest], {read: false})
+    .pipe(clean());
 });
 
 
@@ -77,6 +104,7 @@ gulp.task('kss', ['kss-css', 'kss-sprite'], function(){
 // Rerun the task when a file changes
 gulp.task('watch', function() {
   gulp.watch(paths.js, ['scripts']);
+  gulp.watch('sass/**/*.scss', ['css']);
   gulp.watch(paths.images, ['images']);
   gulp.watch(['html/partials/*', 'html/pages/*'], ['html']);
 });

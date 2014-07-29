@@ -1,7 +1,6 @@
 /*------------------------------------*\
     $CONTENTS
 \*------------------------------------*/
-
 /**
  * $CONTENTS............Table of contents
  * $COMMENTS............Comment formatting
@@ -36,41 +35,89 @@
  * $PRINT...............Print styles
  *  PRINT...............Please put a description of the contents of the partial here 
  */
-
-
 /*------------------------------------*\
     $COMMENTS
 \*------------------------------------*/
-
 /*------------------------------------*\
     $SECTION HEADING
 \*------------------------------------*/
-
 /* ----- single line subheading ----- */
-
 /**
  * multi-line comments
  * comments use
  * DocBlock formatting
  */
-
 /* short comment */
-
 /*ul*/
-
-
 /*------------------------------------*\
     $BASE
 \*------------------------------------*/
+/* line 1, ../sass/base/reset.scss */
+body {
+  margin: 0;
+  padding: 0;
+}
 
-// generic utility styles, variables and mixins, base styles, unclassed HTML elements etc.
+/* line 2, ../sass/base/type.scss */
+h1, .h1 {
+  font-size: 4.8em;
+  margin-top: 0;
+}
 
-@import "base/mixins";
-@import "base/reset";
-@import "base/type";
-@import "base/forms";
-@import "base/helpers";
+/* line 7, ../sass/base/type.scss */
+h2, .h2 {
+  font-size: 4em;
+  margin-top: 0;
+}
 
+/* line 12, ../sass/base/type.scss */
+h3, .h3 {
+  font-size: 3.6em;
+  margin-top: 0;
+}
+
+/* line 17, ../sass/base/type.scss */
+h4, .h4 {
+  font-size: 2.8em;
+  margin-top: 0;
+}
+
+/* line 22, ../sass/base/type.scss */
+h5, .h5 {
+  font-size: 2.4em;
+  margin-top: 0;
+}
+
+/* line 27, ../sass/base/type.scss */
+h6, .h6 {
+  font-size: 1.8em;
+  margin-top: 0;
+}
+
+/* line 32, ../sass/base/type.scss */
+p {
+  font-size: 1.6em;
+  margin: 0;
+  padding: 0;
+}
+/* line 37, ../sass/base/type.scss */
+p + p {
+  margin-top: 1em;
+}
+
+/* line 6, ../sass/base/helpers.scss */
+.no-bullet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 680px) {
+  /* line 12, ../sass/base/helpers.scss */
+  .mobile-only {
+    display: none;
+  }
+}
 
 /*------------------------------------*\
     $LAYOUT
@@ -78,8 +125,35 @@
 /**
  * structural elements/areas, grids, columns etc.
  */
-@import "layout/layout";
+/* line 2, ../sass/layout/layout.scss */
+.header--primary {
+  position: relative;
+  width: 100%;
+  display: block;
+  background: #ccc;
+  min-height: 60px;
+  padding: 15px;
+  box-sizing: border-box;
+  z-index: 2;
+}
 
+/* line 13, ../sass/layout/layout.scss */
+.nav--primary {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 60px;
+  box-sizing: border-box;
+  width: 20%;
+  height: 100%;
+  background: #FCFC23;
+  z-index: 1;
+}
+
+/* line 25, ../sass/layout/layout.scss */
+.main {
+  padding-left: 20%;
+}
 
 /*------------------------------------*\
     $COMPONENTS
@@ -87,37 +161,21 @@
 /**
  * objects and abstractions etc.
  */
-// @import "components/media";
-// @import "components/icon";
-// @import "components/pods";
-// @import "components/pagination";
-// @import "components/breadcrumb";
-// @import "components/site-search";
-
 /*------------------------------------*\
     $PAGES
 \*------------------------------------*/
 /**
  * template-specific/temporary pages etc.
  */
-// @import "pages/T01-index";
-
-//Temp fixes must always come after other template includes
-// @import "pages/temp-fixes";
-
 /*------------------------------------*\
     $SPRITE
 \*------------------------------------*/
 /**
  * sprite url declarion and image name classes with coordinates
  */
-
- // @import "sprite/sprites";
-
 /*------------------------------------*\
     $PRINT
 \*------------------------------------*/
 /**
  * print style
  */
-// @import "base/print";

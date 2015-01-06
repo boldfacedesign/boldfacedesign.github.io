@@ -125,32 +125,32 @@ p + p {
 /**
  * structural elements/areas, grids, columns etc.
  */
-/* line 2, ../sass/layout/layout.scss */
-.header--primary {
+/* line 1, ../sass/layout/layout.scss */
+body {
+  background: #ffd000;
+}
+
+/* line 5, ../sass/layout/layout.scss */
+.header {
   position: relative;
   width: 100%;
   display: block;
-  background: #ccc;
-  min-height: 60px;
-  padding: 15px;
+  background: #fff;
+  height: 180px;
   box-sizing: border-box;
   z-index: 2;
 }
 
-/* line 13, ../sass/layout/layout.scss */
-.nav--primary {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 60px;
-  box-sizing: border-box;
-  width: 20%;
-  height: 100%;
-  background: #FCFC23;
-  z-index: 1;
+/* line 15, ../sass/layout/layout.scss */
+.menu {
+  float: right;
+}
+/* line 18, ../sass/layout/layout.scss */
+.menu li {
+  display: inline-block;
 }
 
-/* line 25, ../sass/layout/layout.scss */
+/* line 23, ../sass/layout/layout.scss */
 .main {
   padding-left: 20%;
 }

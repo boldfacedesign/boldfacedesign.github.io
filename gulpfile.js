@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
 	imagemin = require('gulp-imagemin'),
+  pngcrush = require('imagemin-pngcrush'),
 	newer = require('gulp-newer'),
 	include = require('gulp-include'),
 	prettify = require('gulp-prettify'),
@@ -41,15 +42,15 @@ gulp.task('css', function() {
 })
 
 // Minify and copy all JavaScript (except vendor scripts)
-gulp.task('scripts-min', ['clean'], function() {
-	return gulp.src(paths.scripts)
-        .pipe(newer(paths.js_dest))
-    	.pipe(jshint())
-        .pipe(uglify())
-    	.pipe(rename(function (path) {
-    		path.basename += ".min";
-    	}))
-    	.pipe(gulp.dest(paths.js_dest));
+gulp.task('scripts', ['clean'], function() {
+	return gulp.src(paths.js)
+    .pipe(newer(paths.js_dest))
+    .pipe(jshint())
+    .pipe(uglify())
+    .pipe(rename(function (path) {
+    	path.basename += ".min";
+    }))
+    .pipe(gulp.dest(paths.js_dest));
 });
 
 // Compress all site images (not icons)
@@ -57,12 +58,12 @@ gulp.task('images', function() {
 	return gulp.src(paths.images)
 		.pipe(newer(paths.image_dest))
 		.pipe(imagemin({
-            progressive: true,
-            optimizationLevel: 3,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngcrush()]
-        }))
-        .pipe(gulp.dest(image_dest))
+        progressive: true,
+        optimizationLevel: 3,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngcrush()]
+    }))
+    .pipe(gulp.dest(paths.image_dest))
 });
 
 // Compile HTML from partials into dev/prod folders
@@ -99,7 +100,9 @@ gulp.task('kss', ['kss-css', 'kss-sprite'], function(){
 		.pipe(gulp.dest('guides/complete'))              //define compile folder
 });
 
-
+gulp.task('default', ['clean'], function() {
+  gulp.start(['css', 'scripts', 'images', 'html']);
+});
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {

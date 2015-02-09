@@ -127,32 +127,35 @@ p + p {
  */
 /* line 1, ../sass/layout/layout.scss */
 body {
-  background: #ffd000;
+  background: #fff;
 }
 
-/* line 5, ../sass/layout/layout.scss */
+/* line 6, ../sass/layout/layout.scss */
 .header {
   position: relative;
   width: 100%;
   display: block;
   background: #fff;
-  height: 180px;
+  height: 95px;
   box-sizing: border-box;
+  border-bottom: 1px solid #e8e8e8;
   z-index: 2;
 }
 
-/* line 15, ../sass/layout/layout.scss */
+/* line 17, ../sass/layout/layout.scss */
 .menu {
   float: right;
 }
-/* line 18, ../sass/layout/layout.scss */
+/* line 20, ../sass/layout/layout.scss */
 .menu li {
   display: inline-block;
 }
 
-/* line 23, ../sass/layout/layout.scss */
-.main {
-  padding-left: 20%;
+/* line 25, ../sass/layout/layout.scss */
+.width_bound {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /*------------------------------------*\
@@ -167,6 +170,14 @@ body {
 /**
  * template-specific/temporary pages etc.
  */
+/* line 1, ../sass/pages/home.scss */
+.welcome {
+  display: block;
+  width: 100%;
+  height: 250px;
+  background: url(/images/gplaypattern.png);
+}
+
 /*------------------------------------*\
     $SPRITE
 \*------------------------------------*/

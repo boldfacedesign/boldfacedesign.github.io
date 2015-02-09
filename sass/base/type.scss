@@ -1,12 +1,26 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+a {
+    color: #777;
+}
 
 h1, .h1 {
-    font-size: 4.8em;
+    font-size: 4.8rem;
     margin-top: 0;
 }
 
 h2, .h2 {
-    font-size: 4em;
+    font-size: 3.4rem;
     margin-top: 0;
+    line-height: 1.3;
 }
 
 h3, .h3 {

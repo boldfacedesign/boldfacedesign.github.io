@@ -15,15 +15,60 @@ body {
 }
 
 .menu {
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+
+    > ul {
+        height: 100%;
+        font-size: 0;
+    }
 
     li {
         display: inline-block;
+        height: 100%;
+
+        a {
+            display: block;
+            padding: 0 15px;
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            height: 100%;
+            line-height: 95px;
+
+            &:hover,
+            &.active {
+                // background: #ffd000;
+                background: #07AD91;
+                // color: #333;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.logo {
+    a {
+        position: relative;
+        display: inline-block;
+        text-indent: -9999px;
+        width: 80px;
+        height: 80px;
+        background: url(/images/logo.png) no-repeat center center;
+        background-size: 100% auto;
+        padding-top: 10px;
     }
 }
 
 .width_bound {
+    position: relative;
     width: 80%;
+    height: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
